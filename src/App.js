@@ -1,6 +1,9 @@
 import React from 'react';
 import LoginPage from './Containers/LoginPage';
+import store from './Redux/store';
+
 import styled from 'styled-components';
+import { Provider } from 'react-redux';
 
 const PageLayout = styled.div`
   width: 100%;
@@ -9,9 +12,11 @@ const PageLayout = styled.div`
 
 function App() {
   return (
-    <PageLayout>
-      <LoginPage />
-    </PageLayout>
+    <Provider store={store}>
+      <PageLayout>
+        <LoginPage />
+      </PageLayout>
+    </Provider>
   );
 }
 
