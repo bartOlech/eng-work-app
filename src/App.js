@@ -1,5 +1,5 @@
 import React from 'react';
-import Login from './Components/Login';
+import LoginPage from './Containers/LoginPage';
 import styled from 'styled-components';
 
 const PageLayout = styled.div`
@@ -10,7 +10,7 @@ const PageLayout = styled.div`
 function App() {
   return (
     <PageLayout>
-      <Login />
+      <LoginPage />
     </PageLayout>
   );
 }

@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import LeftContent from './Components/LeftContent';
 import RightContent from './Components/RightContent';
 
+import PropTypes from 'prop-types';
+
 const Main = styled.div`
   width: 1200px;
   height: 580px;
@@ -16,13 +18,18 @@ const Main = styled.div`
   box-shadow: 0px 0px 5px -1px rgba(143,143,143,1);
 `
 
-const Box = () => {
+const Box = ({ onLogin }) => {
   return (
     <Main>
       <LeftContent />
-      <RightContent />
+      <RightContent onLogin={onLogin} />
     </Main>
   )
 }
+
+Box.propTypes = {
+  onLogin: PropTypes.func.isRequired,
+}
+
 
 export default Box;
