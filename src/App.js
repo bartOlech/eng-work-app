@@ -1,6 +1,7 @@
 import React from 'react';
 import LoginPage from './Containers/LoginPage';
 import store from './Redux/store';
+import Main from './Containers/MainPage';
 
 import styled from 'styled-components';
 import { Provider } from 'react-redux';
@@ -14,7 +15,8 @@ function App() {
   return (
     <Provider store={store}>
       <PageLayout>
-        <LoginPage />
+        {/* <LoginPage /> */}
+        <Main />
       </PageLayout>
     </Provider>
   );
