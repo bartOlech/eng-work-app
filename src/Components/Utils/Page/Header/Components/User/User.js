@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-
-import userIco from '../../../../../../assets/user.svg';
+import { connect } from 'react-redux';
 
 const Container = styled.div`
   display: flex;
@@ -23,11 +22,16 @@ const Name = styled.div`
   padding-right: 25px;
 `
 
-const User = () => (
+const User = ({ name, image }) => (
   <Container>
-    <Image ico={userIco} />
-    <Name>Bart</Name>
+    <Image ico={image} />
+    <Name>{name}</Name>
   </Container>
 )
 
-export default User;
+const mapStateToProps = (state) => ({
+  name: state.user.name,
+  image: state.user.image
+})
+
+export default connect(mapStateToProps)(User);

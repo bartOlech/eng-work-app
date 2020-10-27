@@ -10,8 +10,10 @@ const Container = styled.div`
   position: relative;
   display: flex;
   justify-content: space-around;
+  justify-content: ${props => props.justifyContent};
   padding: 15px 0 15px 0;
   box-sizing: border-box;
+  margin-bottom: 30px;
   &::before {
     content: '';
     width: 4px;
@@ -25,8 +27,8 @@ const Container = styled.div`
   }
 `
 
-const CardContent = ({ children, width }) => (
-  <Container width={width}>
+const CardContent = ({ children, width, justifyContent }) => (
+  <Container justifyContent={justifyContent} width={width}>
     {children}
   </Container>
 )
@@ -34,6 +36,7 @@ const CardContent = ({ children, width }) => (
 CardContent.propTypes = {
   children: PropTypes.node.isRequired,
   width: PropTypes.string.isRequired,
+  justifyContent: PropTypes.string.isRequired,
 }
 
 export default CardContent;
