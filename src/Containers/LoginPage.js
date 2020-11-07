@@ -1,6 +1,7 @@
 import React from 'react';
 import Login from '../Components/Login';
 import { setAuth } from '../Redux/Actions/setAuth';
+import firebase from '../firebase.config';
 
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -8,10 +9,12 @@ import PropTypes from 'prop-types';
 const LoginPage = ({ setAuth, isAuth }) => {
   const onLogin = (type) => {
     if (type === 'facebook') {
-      setAuth();
+      // setAuth();
+      firebase.signInWithFacebook().then((result) => console.log(result));
     }
     if (type === 'google') {
-      setAuth();
+      // setAuth();
+      firebase.signInWithGoogle();
     }
   }
 

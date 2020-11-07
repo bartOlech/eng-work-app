@@ -15,8 +15,8 @@ function App() {
   return (
     <Provider store={store}>
       <PageLayout>
-        {/* <LoginPage /> */}
-        <Main />
+        <LoginPage />
+        {/* <Main /> */}
       </PageLayout>
     </Provider>
   );
