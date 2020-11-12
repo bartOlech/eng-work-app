@@ -1,0 +1,1 @@
+module.exports.Keywords = ['Piłka', 'Moda', 'Grać', 'Planszówki', 'Grywać'];

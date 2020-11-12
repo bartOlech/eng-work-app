@@ -1,0 +1,119 @@
+{
+  "id": "werew4f5",
+  "name": "Bartlomiej",
+  "surname": "Olech",
+  "address": "Kraków",
+  "birthday": "11/11/2020",
+  "community": [
+    {
+      "id": "4k60st3",
+      "name": "Inwestowanie w kryptowaluty?",
+      "description": "Grupa, w której mozesz znalezć informacje na temat powszechnego inwestowania",
+      "email": "bla@gmail.com"
+    },
+    {
+      "id": "35k26l",
+      "name": "Piłka nozna dla kumatych...",
+      "description": "Chcesz dowiedzieć się codziennych ciekawostek na temat piłki? Dołącz do naszej grupy!",
+      "email": "bla@gmail.com"
+    }
+  ],
+  "education": "Akademia Górniczo-Hutnicza w Krakowie",
+  "favorite_athletes": [
+    {
+      "name": "Mariusz Pudzianowski"
+    },
+    {
+      "name": "Adam Małysz"
+    }
+  ],
+  "favorite_teams": [
+    {
+      "name": "Wisła Kraków"
+    },
+    {
+      "name": "RB LIPSK"
+    }
+  ],
+  "gender": "male",
+  "languages": ["English", "Spanish", "Polish"],
+  "sports": ["Footbal", "Ski jump", "swimming"],
+  "posts": [
+    {
+      "id": "36gda",
+      "title": "Jesienne temperatury może nie są zbyt atrakcyjne, no ale te kolory! 🍂🍁💛💚♥️ fot. Agnieszka Kaźmierczyk",
+      "published": "11/11/2019"
+    },
+    {
+      "id": "362gd42a",
+      "title": "Witam. Jestem na drugim roku studiów informatycznych. Mimo małego stażu na uczelni mam dość duży staż w programowaniu. Bardzo lubię programować, idzie mi to sprawnie i intuicyjnie. Chciałbym podjąć się stażu w jakiejś firmie gdzie mógłbym programować, przede wszystkim chciałbym nabyć doświadczenie, oraz rozwijać się. Czy jest szansa abym mógł gdziekolwiek podjąć taki staż? Ma ktoś jakieś sugestie?",
+      "published": "12/11/2020"
+    },
+    {
+      "id": "461r42a",
+      "title": "4 zadania z liczb zespolonych. Place złotem termin 4 dni na min 70% !!!!!",
+      "published": "12/09/2020"
+    }
+  ],
+  "likes": [
+    {
+      "id": "4f43",
+      "title": "Paznokcie na codzień",
+      "data": "04/04/2020"
+    },
+    {
+      "id": "4f43",
+      "title": "Sportowy dziennik",
+      "data": "04/06/2020"
+    },
+    {
+      "id": "4f43",
+      "title": "Gry online",
+      "data": "02/01/2020"
+    }
+  ],
+  "comments": [
+    {
+      "id": "4f43",
+      "comment": "hahaha, bardzo fajna fotka"
+    },
+    {
+      "id": "4f43",
+      "comment": "Chciałbym umieć tak angielski"
+    },
+    {
+      "id": "4f43",
+      "comment": "Niemoliwe by to było prawdziwe"
+    },
+    {
+      "id": "4f43",
+      "comment": "Jest nieźle"
+    },
+    {
+      "id": "4f43",
+      "comment": "mój ulubiony klub piłkarski"
+    }
+  ],
+  "music": [
+    {
+      "id": "4f43",
+      "title": "Power play",
+      "type": "blues"
+    },
+    {
+      "id": "4f43",
+      "title": "Baan",
+      "type": "hip-hop"
+    },
+    {
+      "id": "4f43",
+      "title": "Janek spiewa",
+      "type": "jazz"
+    },
+    {
+      "id": "4f43",
+      "title": "Boron",
+      "type": "jazz"
+    }
+  ]
+}
