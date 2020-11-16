@@ -14,7 +14,7 @@ const removePunctation = require('../utils/removePunctuation');
 const FBuser = require('../Data/FBuser.json');
 const KeywordsModel = require('../Models/KeywordsModel');
 
-module.exports.wordFinder = (req, res) => {
+module.exports.wordFinder = (req, res, next) => {
   // connect to database
   mongoose.connect('mongodb+srv://olechbartlomiej:Forhuta123@quizapp.mpygt.mongodb.net/eng-work?retryWrites=true&w=majority', {
     useNewUrlParser: true,
@@ -26,7 +26,7 @@ module.exports.wordFinder = (req, res) => {
   let userKeywords = [];
   const userAddress =  FBuser.address;
   const userBirthday = FBuser.birthday;
-  const userEducation = split(FBuser.education, '');
+  const userEducation = FBuser.education;
   const userFavorite_athletes = FBuser.favorite_athletes;
   const userFavorite_teams = FBuser.favorite_teams;
   const userLanguages = FBuser.languages;
@@ -72,11 +72,22 @@ module.exports.wordFinder = (req, res) => {
 
   // Save to the MongoDB
   const newPerson = new KeywordsModel({
-    id: uniqid(),
-    words: userKeywordsWithStopList
+    id: FBuser.id,
+    name: `${FBuser.name} ${FBuser.surname}`,
+    words: userKeywordsWithStopList,
+    userAddress,
+    userBirthday,
+    userEducation,
+    userFavorite_athletes,
+    userFavorite_teams,
+    userLanguages,
+    userSports,
+    userMusicBand,
+    userMusicType
   });
   
   // newPerson.save().then(() => console.log('The person has been saved')).catch((err) => console.log(err));
-
-  res.send(userKeywordsWithStopList);
+  req.userKeywordsWithStopList = newPerson;
+  next();
+  // res.send(userKeywordsWithStopList);
 }
