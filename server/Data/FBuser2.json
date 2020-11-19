@@ -1,0 +1,116 @@
+{
+  "id": "bart2112",
+  "name": "Weronika",
+  "surname": "Czarny",
+  "address": "Warszawa",
+  "birthday": "10/11/2020",
+  "community": [
+    {
+      "id": "4k60st3",
+      "name": "Szydełkowanie",
+      "description": "Naucz się szydełkować!",
+      "email": "bla@gmail.com"
+    },
+    {
+      "id": "35k26l",
+      "name": "kryptowaluty filmy",
+      "description": "Katalog polskich filmów dekady",
+      "email": "bla@gmail.com"
+    }
+  ],
+  "education": "Akademia Górniczo-Hutnicza w Krakowie",
+  "favorite_athletes": [
+    {
+      "name": "Beata Kozidrak"
+    }
+  ],
+  "favorite_teams": [
+    {
+      "name": "Legia Warszawa"
+    },
+    {
+      "name": "Barcelona"
+    }
+  ],
+  "gender": "female",
+  "languages": ["Angielski", "Włosko", "Polski"],
+  "sports": ["Łyzwy", "Skoki narciarskie", "pływanie"],
+  "posts": [
+    {
+      "id": "36gda",
+      "title": "Ale jestem zła",
+      "published": "11/11/2019"
+    },
+    {
+      "id": "362gd42a",
+      "title": "Co by tu dziś zjeśc",
+      "published": "12/11/2020"
+    },
+    {
+      "id": "461r42a",
+      "title": "Szukam partnera na wesele. Moze być alkoholik",
+      "published": "12/09/2020"
+    }
+  ],
+  "likes": [
+    {
+      "id": "4f43",
+      "title": "Paznokcie na temperatury niecodzień",
+      "data": "04/04/2020"
+    },
+    {
+      "id": "4f43",
+      "title": "Tatiana",
+      "data": "04/06/2020"
+    },
+    {
+      "id": "4f43",
+      "title": "Gry planszowe",
+      "data": "02/01/2020"
+    }
+  ],
+  "comments": [
+    {
+      "id": "4f43",
+      "comment": "Czułe :)"
+    },
+    {
+      "id": "4f43",
+      "comment": "Czemu tak zrobiłeś"
+    },
+    {
+      "id": "4f43",
+      "comment": "hahha, co to było? XD"
+    },
+    {
+      "id": "4f43",
+      "comment": "Jest źle"
+    },
+    {
+      "id": "4f43",
+      "comment": "dobre"
+    }
+  ],
+  "music": [
+    {
+      "id": "4f43",
+      "title": "Peja",
+      "type": "hip-hop"
+    },
+    {
+      "id": "4f43",
+      "title": "Baan",
+      "type": "hip-hop"
+    },
+    {
+      "id": "4f43",
+      "title": "Czesław mozil",
+      "type": "jazz"
+    },
+    {
+      "id": "4f43",
+      "title": "Bonson",
+      "type": "hip-hop"
+    }
+  ]
+}

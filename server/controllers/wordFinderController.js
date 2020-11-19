@@ -11,7 +11,7 @@ const map = require('lodash/map');
 const getUpperArray = require('../utils/getUpperArray');
 const removePunctation = require('../utils/removePunctuation');
 
-const FBuser = require('../Data/FBuser.json');
+const FBuser = require('../Data/FBuser3.json');
 const KeywordsModel = require('../Models/KeywordsModel');
 
 module.exports.wordFinder = (req, res, next) => {
