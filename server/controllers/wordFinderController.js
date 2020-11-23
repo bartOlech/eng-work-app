@@ -24,7 +24,7 @@ module.exports.wordFinder = (req, res, next) => {
 
   // user data
   let userKeywords = [];
-  const userAddress =  FBuser.address;
+  const userCity =  FBuser.city;
   const userBirthday = FBuser.birthday;
   const userEducation = FBuser.education;
   const userFavorite_athletes = FBuser.favorite_athletes;
@@ -75,7 +75,7 @@ module.exports.wordFinder = (req, res, next) => {
     id: FBuser.id,
     name: `${FBuser.name} ${FBuser.surname}`,
     words: userKeywordsWithStopList,
-    userAddress,
+    userCity,
     userBirthday,
     userEducation,
     userFavorite_athletes,

@@ -2,19 +2,19 @@
   "id": "werew4f52",
   "name": "Bartlomiej",
   "surname": "Olech",
-  "address": "Kraków",
+  "city": "Kraków",
   "birthday": "11/11/2020",
   "community": [
     {
       "id": "4k60st3",
-      "name": "Inwestowanie w kryptowaluty? Inwestowanie",
-      "description": "Grupa, Naucz w której mozesz znalezć informacje na temat powszechnego inwestowania",
+      "name": "Inwestowanie w kryptowaluty? Inwestowanie Kęke",
+      "description": "",
       "email": "bla@gmail.com"
     },
     {
       "id": "35k26l",
       "name": "Szydełkowanie",
-      "description": "Chcesz kryptowaluty się codziennych ciekawostek na temat piłki? Dołącz do naszej grupy!",
+      "description": "Chcesz kryptowaluty",
       "email": "bla@gmail.com"
     }
   ],
@@ -36,22 +36,22 @@
     }
   ],
   "gender": "male",
-  "languages": ["English", "Spanish", "Polish"],
-  "sports": ["Footbal", "Ski jump", "swimming"],
+  "languages": ["Angielski", "Portugalski", "polski"],
+  "sports": ["pływanie", "Jazda konno", "szermierka"],
   "posts": [
     {
       "id": "36gda",
-      "title": "Jesienne Paznokcie temperatury może nie są zbyt atrakcyjne, no ale te kolory! 🍂🍁💛💚♥️ fot. Agnieszka Kaźmierczyk",
+      "title": "Jesienne Paznokcie temperatury może nie są zbyt atrakcyjnek",
       "published": "11/11/2019"
     },
     {
       "id": "362gd42a",
-      "title": "Witam. Jestem na drugim roku studiów informatycznych. Mimo małego stażu na uczelni mam dość duży staż w programowaniu. Bardzo lubię programować, idzie mi to sprawnie i intuicyjnie. Chciałbym podjąć się stażu w jakiejś firmie gdzie mógłbym programować, przede wszystkim chciałbym nabyć doświadczenie, oraz rozwijać się. Czy jest szansa abym mógł gdziekolwiek podjąć taki staż? Ma ktoś jakieś sugestie?",
+      "title": "",
       "published": "12/11/2020"
     },
     {
       "id": "461r42a",
-      "title": "4 zadania z liczb zespolonych. Place złotem termin 4 dni na min 70% !!!!!",
+      "title": "",
       "published": "12/09/2020"
     }
   ],

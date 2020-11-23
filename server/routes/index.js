@@ -4,9 +4,12 @@ const router = express.Router();
 const homeController = require('../controllers/homeController');
 const wordFinderController = require('../controllers/wordFinderController');
 const graphController = require('../controllers/graphController');
+const resultsController = require('../controllers/resultsController');
 
 router.get('/graph', wordFinderController.wordFinder, graphController.graph);
 
 router.get('/', wordFinderController.wordFinder);
+
+router.get('/results', resultsController.results);
 
 module.exports = router;

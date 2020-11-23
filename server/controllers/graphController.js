@@ -8,58 +8,69 @@ const session = driver.session()
 module.exports.graph = async (req, res) => {
   const nameId = req.userKeywordsWithStopList.id;
   const userKeywords = req.userKeywordsWithStopList.words;
+  const userCity = req.userKeywordsWithStopList.userCity;
+  const userEducation = req.userKeywordsWithStopList.userEducation;
+  const userFavorite_athletes = req.userKeywordsWithStopList.userFavorite_athletes;
+  const userLanguages = req.userKeywordsWithStopList.userLanguages;
+  const userSports = req.userKeywordsWithStopList.userSports;
+
   
-  // const name = req.name;
-console.log(userKeywords.length)
   // dodanie usera do graph bazy
   try {
-
-    const result = await session.run(
-      `MATCH (p:Person) 
-      WITH COLLECT(p) AS persons
-      UNWIND persons AS p1
-      UNWIND persons AS p2
-      WITH p1,p2
-      WHERE id(p1) > id(p2)
-      MATCH (p1)-[:RATE]->(w:Word)<-[:RATE]-(p2)
-      RETURN p1.name AS p1Name,
-      p2.name AS p2Name,
-      COUNT(DISTINCT w) AS sharedWordCount,
-      COLLECT(DISTINCT w.string) AS sharedWords`,
+    const checkExisting = await session.run(
+      `Match (a:Person {name: '${nameId}'}) RETURN a`,
     )
-  
-    // Wyświetlenie połączeń
-    // result.records.forEach(function(record){
-    //   console.log(record._fields[2].low);        
-    // });
-
-    // const checkExisting = await session.run(
-    //   `Match (a:Person {name: '${nameId}'}) RETURN a`,
-    // )
     // // sprawdzenie czy user juz istnieje
-    // if (checkExisting.records.length === 0) {
-    //   const user = await session.run(
-    //     'CREATE (a:Person {name: $nameId}) RETURN a',
-    //     { 
-    //       nameId,
-    //     }
-    //   )
+    if (checkExisting.records.length === 0) {
+      const user = await session.run(
+        'CREATE (a:Person {name: $nameId}) RETURN a',
+        { 
+          nameId,
+        }
+      )
+
+      // Miasto
+      for (let i = 0; i < userCity.length; i++) {
+        const checkExistingCity = await session.run(
+          `Match (a:City {name: '${userCity[i]}'}) RETURN a`,
+        )
+        if (checkExistingCity.records.length === 0) {
+          const word = await session.run(
+            'CREATE (b:City {name: $name}) RETURN b',
+            { 
+              name: userCity[i],
+            }
+          )
+        }
+
+        // Połączenie Userów przez miasto
+        const mergeWord = await session.run(
+          `MATCH (a:Person),(b:City) WHERE a.name = '${nameId}' AND b.name = '${userCity[i]}'  CREATE (a)-[r:RATE]->(b) RETURN type(r), r.name`,
+        )
+      }
   
-    //   for (let i = 0; i < userKeywords.length; i++) {
-    //     const word = await session.run(
-    //       'CREATE (b:Word {id: $id, name: $name}) RETURN b',
-    //       { 
-    //         id: uniqid(),
-    //         name: userKeywords[i],
-    //       }
-    //     )
+      // Słowa
+      for (let i = 0; i < userKeywords.length; i++) {
+        const checkExistingWord = await session.run(
+          `Match (a:Word {name: '${userKeywords[i]}'}) RETURN a`,
+        )
+
+        if (checkExistingWord.records.length === 0) {
+          const word = await session.run(
+            'CREATE (b:Word {id: $id, name: $name}) RETURN b',
+            { 
+              id: uniqid(),
+              name: userKeywords[i],
+            }
+          )
+        }
   
-          // Połączenie Userów przez słowa
-    //     const mergeWord = await session.run(
-    //       `MATCH (a:Person),(b:Word) WHERE a.name = '${nameId}' AND b.name = '${userKeywords[i]}'  CREATE (a)-[r:RATE { rate: '${Math.random()}' }]->(b) RETURN type(r), r.name`,
-    //     )
-    //   }
-    // }
+        // Połączenie Userów przez słowa
+        const mergeWord = await session.run(
+          `MATCH (a:Person),(b:Word) WHERE a.name = '${nameId}' AND b.name = '${userKeywords[i]}'  CREATE (a)-[r:RATE { rate: '${Math.random()}' }]->(b) RETURN type(r), r.name`,
+        )
+      }
+    }
 
     //     Usunięcie duplikatów:
     // const removedDuplicates = await session.run(

@@ -12,7 +12,7 @@ const dataSchema = new Schema({
   words: {
     type: Array,
   },
-  userAddress: {
+  userCity: {
     type: Array,
   },
   userBirthday: {

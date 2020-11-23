@@ -2,7 +2,7 @@
   "id": "bart2112",
   "name": "Weronika",
   "surname": "Czarny",
-  "address": "Warszawa",
+  "city": "Warszawa",
   "birthday": "10/11/2020",
   "community": [
     {
@@ -21,7 +21,7 @@
   "education": "Akademia Górniczo-Hutnicza w Krakowie",
   "favorite_athletes": [
     {
-      "name": "Beata Kozidrak"
+      "name": "Pudzianowski"
     }
   ],
   "favorite_teams": [
@@ -33,12 +33,12 @@
     }
   ],
   "gender": "female",
-  "languages": ["Angielski", "Włosko", "Polski"],
+  "languages": ["Angielski", "Niemiecki", "Polski"],
   "sports": ["Łyzwy", "Skoki narciarskie", "pływanie"],
   "posts": [
     {
       "id": "36gda",
-      "title": "Ale jestem zła",
+      "title": "Ale jestem zła kęke",
       "published": "11/11/2019"
     },
     {
@@ -48,14 +48,14 @@
     },
     {
       "id": "461r42a",
-      "title": "Szukam partnera na wesele. Moze być alkoholik",
+      "title": "",
       "published": "12/09/2020"
     }
   ],
   "likes": [
     {
       "id": "4f43",
-      "title": "Paznokcie na temperatury niecodzień",
+      "title": "",
       "data": "04/04/2020"
     },
     {
