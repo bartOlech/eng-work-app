@@ -6,7 +6,7 @@ const getLeftSide = require('./getLeftSide');
 const getRightSide = require('./getRightSide');
 
 exports.getUsers = async (username, node) => {
-  let usersAssociation = [];
+  let usersAssociation = [node];
 
   try {
     const leftSideResults = await session.run(

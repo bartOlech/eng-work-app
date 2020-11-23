@@ -24,7 +24,7 @@ module.exports.wordFinder = (req, res, next) => {
 
   // user data
   let userKeywords = [];
-  const userCity =  FBuser.city;
+  const userCity =  FBuser.city
   const userBirthday = FBuser.birthday;
   const userEducation = FBuser.education;
   const userFavorite_athletes = FBuser.favorite_athletes;
@@ -34,7 +34,7 @@ module.exports.wordFinder = (req, res, next) => {
   const userMusicBand = FBuser.music.map(el => el.title);
   const userMusicType = uniqBy(FBuser.music.map(el => el.type));
 
-  const keywords = Keywords.Keywords.map(getUpperArray.getArray);
+  // const keywords = Keywords.Keywords.map(getUpperArray.getArray);
 
   // Add community words
   FBuser.community.map(el => {
