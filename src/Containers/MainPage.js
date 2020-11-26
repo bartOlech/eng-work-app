@@ -39,6 +39,10 @@ const MainPage = ({ getUser, getMainMatched, getSecondMatched, mainMatchedDataFr
   }
 
   useEffect(() => {
+    fetch('http://localhost:8080/results?name=testowe').then(res => res.json()).then(json => {
+        console.log(json)
+    }).catch(err => console.log(err))
+
     // Symulacja pobrania z api
     getUser('Bart', image);
     getMainMatched(mainMatchData)
