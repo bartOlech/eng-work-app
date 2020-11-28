@@ -8,6 +8,7 @@ const session = driver.session()
 
 const getArrayWithName = require('../utils/getArrayWithName');
 const getUpperArray = require('../utils/getUpperArray')
+const config = require('../config/config');
 
 module.exports.graph = async (req, res) => {
   const nameId = req.userKeywordsWithStopList.id;
@@ -48,7 +49,7 @@ module.exports.graph = async (req, res) => {
 
         // Połączenie Userów przez miasto
         const mergeWord = await session.run(
-          `MATCH (a:Person),(b:City) WHERE a.name = '${nameId}' AND b.name = '${userCity[i]}'  CREATE (a)-[r:RATE]->(b) RETURN type(r), r.name`,
+          `MATCH (a:Person),(b:City) WHERE a.name = '${nameId}' AND b.name = '${userCity[i]}'  CREATE (a)-[r:RATE {rate: '${config.rates.city}'}]->(b) RETURN type(r), r.name`,
         )
       }
 
@@ -70,7 +71,7 @@ module.exports.graph = async (req, res) => {
 
         // Połączenie Userów przez szkołe
         const mergeWord = await session.run(
-          `MATCH (a:Person),(b:School) WHERE a.name = '${nameId}' AND b.name = '${userEducation[i]}'  CREATE (a)-[r:RATE]->(b) RETURN type(r), r.name`,
+          `MATCH (a:Person),(b:School) WHERE a.name = '${nameId}' AND b.name = '${userEducation[i]}'  CREATE (a)-[r:RATE {rate: '${config.rates.school}'}]->(b) RETURN type(r), r.name`,
         )
       }
 
@@ -91,7 +92,7 @@ module.exports.graph = async (req, res) => {
 
         // Połączenie Userów przez sportowców
         const mergeWord = await session.run(
-          `MATCH (a:Person),(b:UserFavoriteAthletes) WHERE a.name = '${nameId}' AND b.name = '${userFavorite_athletes[i]}'  CREATE (a)-[r:RATE]->(b) RETURN type(r), r.name`,
+          `MATCH (a:Person),(b:UserFavoriteAthletes) WHERE a.name = '${nameId}' AND b.name = '${userFavorite_athletes[i]}'  CREATE (a)-[r:RATE {rate: '${config.rates.userFavorite_athletes}'}]->(b) RETURN type(r), r.name`,
         )
       }
 
@@ -113,7 +114,7 @@ module.exports.graph = async (req, res) => {
 
         // Połączenie Userów przez języki
         const mergeWord = await session.run(
-          `MATCH (a:Person),(b:UserLanguages) WHERE a.name = '${nameId}' AND b.name = '${userLanguages[i]}'  CREATE (a)-[r:RATE]->(b) RETURN type(r), r.name`,
+          `MATCH (a:Person),(b:UserLanguages) WHERE a.name = '${nameId}' AND b.name = '${userLanguages[i]}'  CREATE (a)-[r:RATE {rate: '${config.rates.userLanguages}'}]->(b) RETURN type(r), r.name`,
         )
       }
 
@@ -135,7 +136,7 @@ module.exports.graph = async (req, res) => {
 
         // Połączenie Userów przez sporty
         const mergeWord = await session.run(
-          `MATCH (a:Person),(b:UserSports) WHERE a.name = '${nameId}' AND b.name = '${userSports[i]}'  CREATE (a)-[r:RATE]->(b) RETURN type(r), r.name`,
+          `MATCH (a:Person),(b:UserSports) WHERE a.name = '${nameId}' AND b.name = '${userSports[i]}'  CREATE (a)-[r:RATE {rate: '${config.rates.userSports}'}]->(b) RETURN type(r), r.name`,
         )
       }
 
@@ -144,7 +145,7 @@ module.exports.graph = async (req, res) => {
       // Dodanie słów do bazy
       for (let i = 0; i < userKeywords.length; i++) {
         const checkExistingWord = await session.run(
-          `Match (a:Word {name: '${userKeywords[i]}'}) RETURN a`,
+          `Match (a:Word {name: '${userKeywords[i].word}'}) RETURN a`,
         )
 
         if (checkExistingWord.records.length === 0) {
@@ -152,14 +153,14 @@ module.exports.graph = async (req, res) => {
             'CREATE (b:Word {id: $id, name: $name}) RETURN b',
             { 
               id: uniqid(),
-              name: userKeywords[i],
+              name: userKeywords[i].word
             }
           )
         }
   
         // Połączenie Userów przez słowa
         const mergeWord = await session.run(
-          `MATCH (a:Person),(b:Word) WHERE a.name = '${nameId}' AND b.name = '${userKeywords[i]}'  CREATE (a)-[r:RATE { rate: '${Math.random()}' }]->(b) RETURN type(r), r.name`,
+          `MATCH (a:Person),(b:Word) WHERE a.name = '${nameId}' AND b.name = '${userKeywords[i].word}'  CREATE (a)-[r:RATE {rate: '${userKeywords[i].count}'}]->(b) RETURN type(r), r.name`,
         )
       }
     }

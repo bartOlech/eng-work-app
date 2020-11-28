@@ -8,7 +8,7 @@ const resultsController = require('../controllers/resultsController');
 
 router.get('/graph', wordFinderController.wordFinder, graphController.graph);
 
-router.get('/', wordFinderController.wordFinder);
+router.get('/', homeController.home);
 
 router.get('/results', resultsController.results);
 

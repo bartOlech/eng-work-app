@@ -67,14 +67,19 @@ module.exports.wordFinder = (req, res, next) => {
 
   // Compare with stopList and change to uppercase
   let userKeywordsWithStopList = map(userKeywords.filter(el => !includes(stopList.list, el)), getUpperArray.getArray);
-  // Remove duplicate
-  userKeywordsWithStopList = uniqBy(userKeywordsWithStopList)
+
+  // create object with count
+  const counts = {};
+  userKeywordsWithStopList.forEach(function(x) { counts[x] = (counts[x] || 0)+1; });
+
+  // transform object to array (with key, value)
+  const output = Object.entries(counts).map(([word, count]) => ({word,count}));
 
   // Save to the MongoDB
   const newPerson = new KeywordsModel({
     id: FBuser.id,
     name: `${FBuser.name} ${FBuser.surname}`,
-    words: userKeywordsWithStopList,
+    words: output,
     userCity,
     userBirthday,
     userEducation,

@@ -23,6 +23,11 @@ exports.getUsers = async (username, node) => {
         user1: record._fields[0],
         user2: record._fields[1],
         associationCount: record._fields[2].low,
+        words: record._fields[3],
+        rates: {
+          user1: record._fields[4],
+          user2: record._fields[5],
+        },
       }
       usersAssociation = [...usersAssociation, association];
     });
@@ -32,6 +37,11 @@ exports.getUsers = async (username, node) => {
         user1: record._fields[0],
         user2: record._fields[1],
         associationCount: record._fields[2].low,
+        words: record._fields[3],
+        rates: {
+          user1: record._fields[4],
+          user2: record._fields[5],
+        },
       }
       usersAssociation = [...usersAssociation, association];
     });
