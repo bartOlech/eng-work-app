@@ -19,6 +19,16 @@ describe('API', () => {
           done();
         })
     })
+
+    it('It should NOT GET all results', (done) => {
+      chai.request(server)
+        //  z literówką
+        .get('/result?name=testowe')
+        .end((err, response) => {
+          response.should.have.status(404);
+          done();
+        })
+    })
   })
 })
 
