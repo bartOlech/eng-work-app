@@ -12,15 +12,18 @@ const getUpperArray = require('../utils/getUpperArray');
 const removePunctation = require('../utils/removePunctuation');
 
 const FBuser = require('../Data/FBuser3.json');
+
+const UsersDataModel = require('../Models/UsersModel');
 const KeywordsModel = require('../Models/KeywordsModel');
 
 module.exports.wordFinder = (req, res, next) => {
-  // connect to database
-  mongoose.connect('mongodb+srv://olechbartlomiej:Forhuta123@quizapp.mpygt.mongodb.net/eng-work?retryWrites=true&w=majority', {
+   // connect to database
+   mongoose.connect('mongodb+srv://olechbartlomiej:Forhuta123@quizapp.mpygt.mongodb.net/eng-work?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useUnifiedTopology: true
   }).then(console.log('MongoDB conected')).catch(err => console.log(err))
   mongoose.Promise = global.Promise;
+
 
   // user data
   let userKeywords = [];
@@ -75,7 +78,7 @@ module.exports.wordFinder = (req, res, next) => {
   // transform object to array (with key, value)
   const output = Object.entries(counts).map(([word, count]) => ({word,count}));
 
-  // Save to the MongoDB
+  // Create object
   const newPerson = new KeywordsModel({
     id: FBuser.id,
     name: `${FBuser.name} ${FBuser.surname}`,
@@ -90,9 +93,26 @@ module.exports.wordFinder = (req, res, next) => {
     userMusicBand,
     userMusicType
   });
+
+   // Save to the MongoDB
+   const Person = new UsersDataModel({
+    id: FBuser.id,
+    name: `${FBuser.name} ${FBuser.surname}`,
+    city: userCity,
+  });
+
+  const options = {
+    id: FBuser.id,
+  }
+
+  UsersDataModel.find(options).then((users)=>{
+    if(users.length > 0){
+      console.log('This user already exists')
+    }else{
+      Person.save().then(() => console.log('The person has been saved')).catch((err) => console.log(err));
+    }
+  })
   
-  // newPerson.save().then(() => console.log('The person has been saved')).catch((err) => console.log(err));
   req.userKeywordsWithStopList = newPerson;
   next();
-  // res.send(userKeywordsWithStopList);
 }

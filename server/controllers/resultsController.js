@@ -3,6 +3,9 @@ const driver = neo4j.driver("neo4j://localhost", neo4j.auth.basic('neo4j', 'Forh
 const session = driver.session()
 const map = require('lodash/map');
 
+const mongoose = require('mongoose');
+const UsersDataModel = require('../Models/UsersModel');
+
 const getLeftSide = require('../utils/getLeftSide');
 const getRightSide = require('../utils/getRightSide');
 const results = require('../utils/convertAndReturn');
@@ -14,6 +17,13 @@ const sumArray = (totalRate) => {
 }
 
 module.exports.results = async (req, res) => {
+  mongoose.connect('mongodb+srv://olechbartlomiej:Forhuta123@quizapp.mpygt.mongodb.net/eng-work?retryWrites=true&w=majority', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  }).then(console.log('MongoDB conected')).catch(err => console.log(err))
+  mongoose.Promise = global.Promise;
+
+
   let userResults = [];
 
   const username = req.query.name;
@@ -70,6 +80,33 @@ module.exports.results = async (req, res) => {
 
   // sortowanie wyników
   const sortedResults = ratesArr.sort((a, b) => (a.totalRate < b.totalRate) ? 1 : -1);
-  // console.log(sortedResults)
-  res.send(sortedResults);
+  let sortedResultsUserData = [];
+
+
+  // TU COŚ NIE DZIAŁA, DO NAPRAWY!!!!
+  // Pobranie userów z bazy mongo
+  for (let i = 0; i < sortedResults.length; i++) {
+    const options = {
+      id: sortedResults[i].user,
+    }
+  
+    UsersDataModel.find(options).then((users)=>{
+      sortedResultsUserData.push(users[0])
+      
+      if (sortedResultsUserData.length === sortedResults.length) {
+        res.status(200).json({
+          ratesArray: sortedResults,
+          userDataArray: sortedResultsUserData
+        });
+      }
+    }).catch(err => {
+      console.log(err)
+    })
+
+
+  }
+  // res.status(200).json({
+  //   ratesArray: sortedResults,
+  //   userDataArray: sortedResultsUserData
+  // });
 }

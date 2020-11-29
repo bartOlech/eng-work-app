@@ -13,6 +13,7 @@ const config = require('../config/config');
 module.exports.graph = async (req, res) => {
   const nameId = req.userKeywordsWithStopList.id;
   const userKeywords = req.userKeywordsWithStopList.words;
+  const userName = req.userKeywordsWithStopList.name;
   const userCity = map(req.userKeywordsWithStopList.userCity, getUpperArray.getArray);
   const userEducation = map(req.userKeywordsWithStopList.userEducation, getUpperArray.getArray);
   const userFavorite_athletes = map(getArrayWithName.get(req.userKeywordsWithStopList.userFavorite_athletes), getUpperArray.getArray);
@@ -27,9 +28,11 @@ module.exports.graph = async (req, res) => {
     // // sprawdzenie czy user juz istnieje
     if (checkExisting.records.length === 0) {
       const user = await session.run(
-        'CREATE (a:Person {name: $nameId}) RETURN a',
+        'CREATE (a:Person {name: $nameId, userName: $userName, city: $userCity}) RETURN a',
         { 
           nameId,
+          userName,
+          userCity
         }
       )
 

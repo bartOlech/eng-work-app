@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import { getUser } from '../Redux/Actions/getUser';
@@ -10,6 +10,7 @@ import Main from '../Components/Main';
 import image from '../assets/user.svg';
 
 const MainPage = ({ getUser, getMainMatched, getSecondMatched, mainMatchedDataFromApi, secondMatchDataFromApi }) => {
+  const[users, setUsers] = useState([]);
 
   // Do usunięcia w przyszłości, będzie pobierane z api
   const mainMatchData = [
@@ -38,9 +39,12 @@ const MainPage = ({ getUser, getMainMatched, getSecondMatched, mainMatchedDataFr
     place: 'Wrocław',
   }
 
+  // Zalogowany user
+  const user = 'werew4f52';
+
   useEffect(() => {
-    fetch('http://localhost:8080/results?name=testowe').then(res => res.json()).then(json => {
-        console.log(json)
+    fetch(`http://localhost:8080/results?name=${user}`).then(res => res.json()).then(json => {
+        setUsers(json)
     }).catch(err => console.log(err))
 
     // Symulacja pobrania z api
@@ -50,7 +54,11 @@ const MainPage = ({ getUser, getMainMatched, getSecondMatched, mainMatchedDataFr
   }, [])
 
   return (
-    <Main mainMatchData={mainMatchedDataFromApi} secondMatchData={secondMatchDataFromApi} />
+    <div>
+      {console.log(users)}
+      <Main mainMatchData={mainMatchedDataFromApi} secondMatchData={secondMatchDataFromApi} />
+    </div>
+
   )
 }
 
